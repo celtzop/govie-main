@@ -128,10 +128,22 @@
             border-radius: 8px;
             padding: 20px;
             background-color: #ffffff;
-            border-left: 10px solid #004d44;
             display: inline-block;
             width: 100%;
             box-sizing: border-box;
+            position: relative;
+        }
+
+        .embed-preview::before {
+            content: '';
+            width: 5px;
+            height: 100%;
+            background-color: var(--embed-color, #004d44);
+            position: absolute;
+            left: 0;
+            top: 0;
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
         }
 
         .embed-preview img {
@@ -182,6 +194,17 @@
             max-width: 30px;
             margin-right: 10px;
         }
+
+        pre {
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-height: 300px;
+            overflow-y: auto;
+        }
     </style>
 </head>
 
@@ -215,7 +238,7 @@
             </div>
             <div class="form-group">
                 <label for="color">Color</label>
-                <input type="number" id="color" placeholder="5814783">
+                <input type="color" id="color" value="#004d44">
             </div>
             <div class="form-group">
                 <label for="footer-text">Footer Text</label>
@@ -243,6 +266,8 @@
         <div class="right">
             <h2>Generated Embed Preview</h2>
             <div id="embed-preview" class="embed-preview"></div>
+            <h2>Generated JSON</h2>
+            <pre id="output"></pre>
         </div>
     </div>
 
@@ -256,12 +281,32 @@
             const footerIconUrl = document.getElementById('footer-icon-url').value;
             const imageUrl = document.getElementById('image-url').value;
             const thumbnailUrl = document.getElementById('thumbnail-url').value;
-            const fields = document.getElementById('fields').value;
+            let fields = [];
 
+            try {
+                fields = JSON.parse(document.getElementById('fields').value);
+            } catch (e) {
+                console.error('Invalid JSON for fields');
+            }
+
+            const embed = {
+                description: title ? `## ${title}\n${description}` : description, // Title included in description as "## Title"
+                url,
+                color: parseInt(color.replace('#', ''), 16), // Convert hex color to integer
+                footer: footerText ? { text: footerText, icon_url: footerIconUrl || undefined } : undefined,
+                image: imageUrl ? { url: imageUrl } : undefined,
+                thumbnail: thumbnailUrl ? { url: thumbnailUrl } : undefined,
+                fields: fields.length ? fields : undefined
+            };
+
+            document.getElementById('output').textContent = JSON.stringify(embed, null, 2);
+
+            // Update the embed preview
             const embedPreview = document.getElementById('embed-preview');
             embedPreview.innerHTML = '';
+            embedPreview.style.setProperty('--embed-color', color);
 
-            // Create a div for the title
+            // Create a div for the title if provided
             if (title) {
                 const titleElement = document.createElement('div');
                 titleElement.className = 'embed-title';
@@ -269,7 +314,7 @@
                 embedPreview.appendChild(titleElement);
             }
 
-            // Create a div for the description
+            // Create a div for the description if provided
             if (description) {
                 const descriptionElement = document.createElement('div');
                 descriptionElement.className = 'embed-description';
@@ -285,33 +330,28 @@
             }
 
             // Create a div for fields if provided
-            if (fields) {
-                try {
-                    const fieldsArray = JSON.parse(fields);
-                    const fieldsContainer = document.createElement('div');
-                    fieldsContainer.className = 'embed-fields';
+            if (fields.length) {
+                const fieldsContainer = document.createElement('div');
+                fieldsContainer.className = 'embed-fields';
 
-                    fieldsArray.forEach(field => {
-                        const fieldElement = document.createElement('div');
-                        fieldElement.className = 'embed-field';
+                fields.forEach(field => {
+                    const fieldElement = document.createElement('div');
+                    fieldElement.className = 'embed-field';
 
-                        const nameElement = document.createElement('span');
-                        nameElement.className = 'name';
-                        nameElement.textContent = field.name;
+                    const nameElement = document.createElement('span');
+                    nameElement.className = 'name';
+                    nameElement.textContent = field.name;
 
-                        const valueElement = document.createElement('span');
-                        valueElement.className = 'value';
-                        valueElement.textContent = field.value;
+                    const valueElement = document.createElement('span');
+                    valueElement.className = 'value';
+                    valueElement.textContent = field.value;
 
-                        fieldElement.appendChild(nameElement);
-                        fieldElement.appendChild(valueElement);
-                        fieldsContainer.appendChild(fieldElement);
-                    });
+                    fieldElement.appendChild(nameElement);
+                    fieldElement.appendChild(valueElement);
+                    fieldsContainer.appendChild(fieldElement);
+                });
 
-                    embedPreview.appendChild(fieldsContainer);
-                } catch (e) {
-                    console.error('Invalid JSON for fields');
-                }
+                embedPreview.appendChild(fieldsContainer);
             }
 
             // Create a div for the footer if provided
