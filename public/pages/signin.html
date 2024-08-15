@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+        .signin-container {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+        .signin-container h2 {
+            margin-bottom: 20px;
+        }
+        .signin-container button {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .roblox-button {
+            background-color: #ffcc00;
+        }
+        .roblox-button:hover {
+            background-color: #e6b800;
+        }
+        .discord-button {
+            background-color: #7289da;
+            color: white;
+        }
+        .discord-button:hover {
+            background-color: #5a73b5;
+        }
+    </style>
+</head>
+<body>
+
+<div class="signin-container">
+    <h2>Sign In</h2>
+    <button id="roblox-signin-button" class="roblox-button">Sign In with Roblox</button>
+    <button id="discord-signin-button" class="discord-button">Sign In with Discord</button>
+</div>
+
+<script>
+    document.getElementById('roblox-signin-button').addEventListener('click', function() {
+        const robloxClientId = 'YOUR_ROBLOX_CLIENT_ID';
+        const robloxRedirectUri = 'YOUR_ROBLOX_REDIRECT_URI';
+        const robloxResponseType = 'code';
+        const robloxScope = 'YOUR_ROBLOX_SCOPE';
+
+        const robloxOauthUrl = `https://auth.roblox.com/oauth/authorize?response_type=${robloxResponseType}&client_id=${robloxClientId}&redirect_uri=${encodeURIComponent(robloxRedirectUri)}&scope=${robloxScope}`;
+
+        window.location.href = robloxOauthUrl;
+    });
+
+    document.getElementById('discord-signin-button').addEventListener('click', function() {
+        const discordClientId = '1269263174864212059';
+        const discordRedirectUri = 'http://127.0.0.1:5500/pages/signin.html';
+        const discordResponseType = 'code';
+        const discordScope = 'identify';
+
+        const discordOauthUrl = `https://discord.com/api/oauth2/authorize?response_type=${discordResponseType}&client_id=${discordClientId}&redirect_uri=${encodeURIComponent(discordRedirectUri)}&scope=${encodeURIComponent(discordScope)}`;
+
+        window.location.href = discordOauthUrl;
+    });
+</script>
+
+</body>
+</html>

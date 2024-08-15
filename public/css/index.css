@@ -1,0 +1,169 @@
+/* Example for local font */
+@font-face {
+   font-family: 'Lato';
+   src: url('../fonts/Lato.woff2') format('woff2');
+   font-weight: normal;
+   font-style: normal;
+}
+@font-face {
+   font-family: 'Lato-Bold';
+   src: url('../fonts/latobold.woff2') format('woff2');
+   font-weight: normal;
+   font-style: normal;
+}
+
+body {
+   font-family: Lato, sans-serif; /* Lato should now be available */
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   color: #333;
+}
+
+header {
+   background-color: #004d44;
+   color: #ffffff;
+   padding: 5px 20px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   position: relative;
+   z-index: 1000;
+   box-sizing: border-box;
+}
+
+header img {
+   max-width: 150px;
+   height: auto;
+   margin-left: 50px; /* Added 'px' unit */
+}
+
+nav {
+   background-color: #004d44;
+   color: #ffffff;
+   padding-right: 15px;
+   padding-left: 15px;
+   font-size: 27;
+   flex: 1;
+}
+
+nav ul {
+   list-style: none;
+   padding: 0;
+   margin: 0;
+   display: flex;
+   justify-content: center;
+}
+
+nav ul li {
+   margin: 0;
+}
+
+nav ul li a {
+   color: #ffffff;
+   text-decoration: none;
+   padding: 10px 20px;
+}
+
+nav ul li a:hover {
+   background-color: #0056a0;
+}
+
+.search-container {
+   background-color: #00665c;
+   padding: 15px; /* Unified padding for consistency */
+   margin: 0 auto;
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+   display: flex;
+   justify-content: center; /* Center content horizontally */
+}
+
+.search-content {
+   max-width: 1000px; /* Adjust as needed */
+   width: 100%;
+   display: flex;
+   justify-content: space-between; /* Space between search box and pinned items */
+}
+
+.search-box {
+   flex: 2;
+   display: flex;
+   flex-direction: column; /* Stack heading and form vertically */
+   border-radius: 4px;
+   overflow: hidden; /* Ensure input and button are contained within the box */
+}
+
+.search-box h1 {
+   margin: 0;
+   padding: 0 20px;
+   color: #ffffff;
+   text-align: left;
+}
+
+.search-box form {
+   display: flex;
+   flex-direction: column;
+   margin-top: 20px;
+}
+
+.search-box .input-group {
+   display: flex;
+}
+
+.search-box input[type="text"] {
+   padding: 10px 16px; /* Unified padding for consistency */
+   border: 1px solid #ccc;
+   border-radius: 4px 0 0 4px;
+   font-size: 16px;
+   outline: none;
+}
+
+.search-box button {
+   padding: 15px; /* Unified padding for consistency */
+   background-color: #83764e;
+   color: #ffffff;
+   border: 1px solid #83764e;
+   cursor: pointer;
+   font-size: 16px;
+}
+
+.search-box button:hover {
+   background-color: #003e3b;
+}
+
+.search-info {
+   flex: 1;
+   padding-left: 20px;
+   color: #ffffff;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+}
+
+.search-info h2 {
+   font-size: 18px;
+   margin-top: 20px;
+}
+
+.search-info ul {
+   list-style: none;
+   padding: 0;
+   margin: 0;
+}
+
+.search-info ul li {
+   margin: 10px 0;
+}
+
+.search-info ul li a {
+   color: #ffffff;
+   text-decoration: none;
+}
+
+.search-info ul li a:hover {
+   text-decoration: underline;
+}
+
+.container {
+   padding: 20px;
+}
