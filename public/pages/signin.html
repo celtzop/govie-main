@@ -51,7 +51,6 @@
 <div class="signin-container">
     <h2>Sign In</h2>
     <button id="roblox-signin-button" class="roblox-button">Sign In with Roblox</button>
-    <button id="discord-signin-button" class="discord-button">Sign In with Discord</button>
 </div>
 
 <script>
@@ -64,17 +63,6 @@
         const robloxOauthUrl = `https://auth.roblox.com/oauth/authorize?response_type=${robloxResponseType}&client_id=${robloxClientId}&redirect_uri=${encodeURIComponent(robloxRedirectUri)}&scope=${robloxScope}`;
 
         window.location.href = robloxOauthUrl;
-    });
-
-    document.getElementById('discord-signin-button').addEventListener('click', function() {
-        const discordClientId = '1269263174864212059';
-        const discordRedirectUri = 'http://127.0.0.1:5500/pages/signin.html';
-        const discordResponseType = 'code';
-        const discordScope = 'identify';
-
-        const discordOauthUrl = `https://discord.com/api/oauth2/authorize?response_type=${discordResponseType}&client_id=${discordClientId}&redirect_uri=${encodeURIComponent(discordRedirectUri)}&scope=${encodeURIComponent(discordScope)}`;
-
-        window.location.href = discordOauthUrl;
     });
 </script>
 

@@ -14,7 +14,7 @@
                 <li><a href="#">News</a></li>
                 <li><a href="#">Departments</a></li>
                 <li><a href="#">Services</a></li>
-                <li><a href="/pages/signin.html">Sign in</a></li> <!-- Updated path -->
+                <li id="auth-link"><a href="/pages/signin.html">Sign in</a></li> <!-- Initially displays 'Sign In' -->
             </ul>
         </nav>
     </header>
@@ -49,5 +49,21 @@
         <h1>gov.ie</h1>
         <p>what the frick.</p>
     </div>
+
+    <script>
+        function updateHeader() {
+            const authLink = document.getElementById('auth-link');
+            const username = localStorage.getItem('username');
+
+            if (username) {
+                authLink.innerHTML = `<a href="/pages/logout.html">Welcome, ${username}</a>`; // Update link to show username
+            } else {
+                authLink.innerHTML = '<a href="/pages/signin.html">Sign in</a>'; // Default to 'Sign In'
+            }
+        }
+
+        // Call updateHeader on page load
+        document.addEventListener('DOMContentLoaded', updateHeader);
+    </script>
 </body>
 </html>
