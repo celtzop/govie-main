@@ -1,15 +1,15 @@
 <!DOCTYPE HTML>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Embed Creator Tool</title>
     <style>
-        /* Google Fonts import */
         @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 
         body {
-            font-family: 'Lato', sans-serif; /* Lato should now be available */
+            font-family: 'Lato', sans-serif;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -67,14 +67,8 @@
             background: #fff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            color: #004d44;
-            font-size: 2em;
-            border-bottom: 2px solid #004d44;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+            display: flex;
+            gap: 20px;
         }
 
         .form-group {
@@ -88,7 +82,8 @@
             color: #333;
         }
 
-        input, textarea {
+        input,
+        textarea {
             width: 100%;
             padding: 12px;
             border: 1px solid #ddd;
@@ -117,24 +112,79 @@
             background-color: #003e3b;
         }
 
-        h2 {
-            color: #004d44;
-            font-size: 1.5em;
-            margin-top: 20px;
-            border-bottom: 2px solid #004d44;
-            padding-bottom: 10px;
+        .left {
+            flex: 1;
         }
 
-        pre {
-            background: #e9ecef;
-            padding: 15px;
+        .right {
+            flex: 1;
+            background: #f4f4f4;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .embed-preview {
+            border-radius: 8px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-left: 10px solid #004d44;
+            display: inline-block;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .embed-preview img {
+            max-width: 100%;
             border-radius: 4px;
-            border: 1px solid #ddd;
-            white-space: pre-wrap;
-            word-wrap: break-word;
+        }
+
+        .embed-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #004d44;
+            margin-bottom: 10px;
+        }
+
+        .embed-description {
+            margin-bottom: 10px;
+            white-space: pre-line;
+        }
+
+        .embed-fields {
+            margin-top: 10px;
+        }
+
+        .embed-field {
+            margin-bottom: 8px;
+        }
+
+        .embed-field .name {
+            font-weight: bold;
+            display: inline-block;
+            width: 30%;
+        }
+
+        .embed-field .value {
+            display: inline-block;
+            width: 65%;
+        }
+
+        .embed-footer {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+        }
+
+        .embed-footer img {
+            max-width: 30px;
+            margin-right: 10px;
         }
     </style>
 </head>
+
 <body>
     <header>
         <img src="../img/gov.ie.png" alt="Government of Ireland Logo">
@@ -149,46 +199,51 @@
     </header>
 
     <div class="container">
-        <h1>Embed Creator Tool</h1>
-        <div class="form-group">
-            <label for="title">Title</label>
-            <input type="text" id="title" placeholder="Job Title">
+        <div class="left">
+            <h1>Embed Creator Tool</h1>
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" id="title" placeholder="Job Title">
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" placeholder="Description of the job listing."></textarea>
+            </div>
+            <div class="form-group">
+                <label for="url">URL</label>
+                <input type="url" id="url" placeholder="https://example.com">
+            </div>
+            <div class="form-group">
+                <label for="color">Color</label>
+                <input type="number" id="color" placeholder="5814783">
+            </div>
+            <div class="form-group">
+                <label for="footer-text">Footer Text</label>
+                <input type="text" id="footer-text" placeholder="Footer text">
+            </div>
+            <div class="form-group">
+                <label for="footer-icon-url">Footer Icon URL</label>
+                <input type="url" id="footer-icon-url" placeholder="https://example.com/footer-icon.png">
+            </div>
+            <div class="form-group">
+                <label for="image-url">Image URL</label>
+                <input type="url" id="image-url" placeholder="https://example.com/image.png">
+            </div>
+            <div class="form-group">
+                <label for="thumbnail-url">Thumbnail URL</label>
+                <input type="url" id="thumbnail-url" placeholder="https://example.com/thumbnail.png">
+            </div>
+            <div class="form-group">
+                <label for="fields">Fields (JSON Array)</label>
+                <textarea id="fields" placeholder='[{"name": "Field Name", "value": "Field Value", "inline": true}]'></textarea>
+            </div>
+            <button onclick="generateJSON()">Generate JSON</button>
         </div>
-        <div class="form-group">
-            <label for="description">Description</label>
-            <textarea id="description" placeholder="Description of the job listing."></textarea>
+
+        <div class="right">
+            <h2>Generated Embed Preview</h2>
+            <div id="embed-preview" class="embed-preview"></div>
         </div>
-        <div class="form-group">
-            <label for="url">URL</label>
-            <input type="url" id="url" placeholder="https://example.com">
-        </div>
-        <div class="form-group">
-            <label for="color">Color</label>
-            <input type="number" id="color" placeholder="5814783">
-        </div>
-        <div class="form-group">
-            <label for="footer-text">Footer Text</label>
-            <input type="text" id="footer-text" placeholder="Footer text">
-        </div>
-        <div class="form-group">
-            <label for="footer-icon-url">Footer Icon URL</label>
-            <input type="url" id="footer-icon-url" placeholder="https://example.com/footer-icon.png">
-        </div>
-        <div class="form-group">
-            <label for="image-url">Image URL</label>
-            <input type="url" id="image-url" placeholder="https://example.com/image.png">
-        </div>
-        <div class="form-group">
-            <label for="thumbnail-url">Thumbnail URL</label>
-            <input type="url" id="thumbnail-url" placeholder="https://example.com/thumbnail.png">
-        </div>
-        <div class="form-group">
-            <label for="fields">Fields (JSON Array)</label>
-            <textarea id="fields" placeholder='[{"name": "Field Name", "value": "Field Value", "inline": true}]'></textarea>
-        </div>
-        <button onclick="generateJSON()">Generate JSON</button>
-        <h2>Generated JSON</h2>
-        <pre id="output"></pre>
     </div>
 
     <script>
@@ -210,7 +265,7 @@
             }
 
             const embed = {
-                description: title ? `## ${title}\n${description}` : description, // Title included in description as "## Title"
+                description: title ? `## ${title}\n${description}` : description,
                 url,
                 color,
                 footer: footerText ? { text: footerText, icon_url: footerIconUrl || undefined } : undefined,
@@ -220,7 +275,70 @@
             };
 
             document.getElementById('output').textContent = JSON.stringify(embed, null, 2);
+            updatePreview(embed);
+        }
+
+        function updatePreview(embed) {
+            const preview = document.getElementById('embed-preview');
+            preview.innerHTML = '';
+
+            if (embed.color) {
+                preview.style.borderLeftColor = `#${embed.color.toString(16)}`;
+            }
+
+            if (embed.description) {
+                const descriptionParts = embed.description.split('\n');
+                const titleElement = document.createElement('div');
+                titleElement.className = 'embed-title';
+                titleElement.textContent = descriptionParts[0].replace('## ', '');
+                preview.appendChild(titleElement);
+
+                const descriptionElement = document.createElement('div');
+                descriptionElement.className = 'embed-description';
+                descriptionElement.textContent = descriptionParts.slice(1).join('\n');
+                preview.appendChild(descriptionElement);
+            }
+
+            if (embed.image) {
+                const imageElement = document.createElement('img');
+                imageElement.src = embed.image.url;
+                preview.appendChild(imageElement);
+            }
+
+            if (embed.thumbnail) {
+                const thumbnailElement = document.createElement('img');
+                thumbnailElement.src = embed.thumbnail.url;
+                thumbnailElement.style.float = 'right';
+                preview.appendChild(thumbnailElement);
+            }
+
+            if (embed.fields) {
+                const fieldsContainer = document.createElement('div');
+                fieldsContainer.className = 'embed-fields';
+                embed.fields.forEach(field => {
+                    const fieldElement = document.createElement('div');
+                    fieldElement.className = 'embed-field';
+                    fieldElement.innerHTML = `<span class="name">${field.name}</span>: <span class="value">${field.value}</span>`;
+                    fieldsContainer.appendChild(fieldElement);
+                });
+                preview.appendChild(fieldsContainer);
+            }
+
+            if (embed.footer) {
+                const footerElement = document.createElement('div');
+                footerElement.className = 'embed-footer';
+                if (embed.footer.icon_url) {
+                    const footerIcon = document.createElement('img');
+                    footerIcon.src = embed.footer.icon_url;
+                    footerElement.appendChild(footerIcon);
+                }
+                const footerText = document.createElement('span');
+                footerText.textContent = embed.footer.text;
+                footerElement.appendChild(footerText);
+                preview.appendChild(footerElement);
+            }
         }
     </script>
 </body>
+
 </html>
