@@ -2,14 +2,38 @@
   "version": 2,
   "builds": [
     {
-      "src": "public/embed.html",
+      "src": "public/index.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "public/css/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "public/fonts/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "public/img/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "public/javascript/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "public/pages/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "public/static/_reboot/_reboot_app/css/**",
       "use": "@vercel/static"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/public/embed.html"
+      "dest": "/public/index.html"
     }
   ]
 }
