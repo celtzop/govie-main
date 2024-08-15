@@ -197,14 +197,10 @@
             const description = document.getElementById('description').value;
             const url = document.getElementById('url').value;
             const color = parseInt(document.getElementById('color').value) || null;
-            const timestamp = document.getElementById('timestamp').value ? new Date(document.getElementById('timestamp').value).toISOString() : null;
             const footerText = document.getElementById('footer-text').value;
             const footerIconUrl = document.getElementById('footer-icon-url').value;
             const imageUrl = document.getElementById('image-url').value;
             const thumbnailUrl = document.getElementById('thumbnail-url').value;
-            const authorName = document.getElementById('author-name').value;
-            const authorUrl = document.getElementById('author-url').value;
-            const authorIconUrl = document.getElementById('author-icon-url').value;
             let fields = [];
 
             try {
@@ -220,7 +216,6 @@
                 footer: footerText ? { text: footerText, icon_url: footerIconUrl || undefined } : undefined,
                 image: imageUrl ? { url: imageUrl } : undefined,
                 thumbnail: thumbnailUrl ? { url: thumbnailUrl } : undefined,
-                author: authorName ? { name: authorName, url: authorUrl || undefined, icon_url: authorIconUrl || undefined } : undefined,
                 fields: fields.length ? fields : undefined
             };
 
