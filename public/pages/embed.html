@@ -237,7 +237,7 @@
                 <label for="fields">Fields (JSON Array)</label>
                 <textarea id="fields" placeholder='[{"name": "Field Name", "value": "Field Value", "inline": true}]'></textarea>
             </div>
-            <button onclick="generateJSON()">Generate JSON</button>
+            <button onclick="generateEmbed()">Generate Embed</button>
         </div>
 
         <div class="right">
@@ -247,95 +247,99 @@
     </div>
 
     <script>
-        function generateJSON() {
+        function generateEmbed() {
             const title = document.getElementById('title').value;
             const description = document.getElementById('description').value;
             const url = document.getElementById('url').value;
-            const color = parseInt(document.getElementById('color').value) || null;
+            const color = document.getElementById('color').value;
             const footerText = document.getElementById('footer-text').value;
             const footerIconUrl = document.getElementById('footer-icon-url').value;
             const imageUrl = document.getElementById('image-url').value;
             const thumbnailUrl = document.getElementById('thumbnail-url').value;
-            let fields = [];
+            const fields = document.getElementById('fields').value;
 
-            try {
-                fields = JSON.parse(document.getElementById('fields').value);
-            } catch (e) {
-                fields = [];
-            }
+            const embedPreview = document.getElementById('embed-preview');
+            embedPreview.innerHTML = '';
 
-            const embed = {
-                description: title ? `## ${title}\n${description}` : description,
-                url,
-                color,
-                footer: footerText ? { text: footerText, icon_url: footerIconUrl || undefined } : undefined,
-                image: imageUrl ? { url: imageUrl } : undefined,
-                thumbnail: thumbnailUrl ? { url: thumbnailUrl } : undefined,
-                fields: fields.length ? fields : undefined
-            };
-
-            document.getElementById('output').textContent = JSON.stringify(embed, null, 2);
-            updatePreview(embed);
-        }
-
-        function updatePreview(embed) {
-            const preview = document.getElementById('embed-preview');
-            preview.innerHTML = '';
-
-            if (embed.color) {
-                preview.style.borderLeftColor = `#${embed.color.toString(16)}`;
-            }
-
-            if (embed.description) {
-                const descriptionParts = embed.description.split('\n');
+            // Create a div for the title
+            if (title) {
                 const titleElement = document.createElement('div');
                 titleElement.className = 'embed-title';
-                titleElement.textContent = descriptionParts[0].replace('## ', '');
-                preview.appendChild(titleElement);
+                titleElement.textContent = title;
+                embedPreview.appendChild(titleElement);
+            }
 
+            // Create a div for the description
+            if (description) {
                 const descriptionElement = document.createElement('div');
                 descriptionElement.className = 'embed-description';
-                descriptionElement.textContent = descriptionParts.slice(1).join('\n');
-                preview.appendChild(descriptionElement);
+                descriptionElement.textContent = description;
+                embedPreview.appendChild(descriptionElement);
             }
 
-            if (embed.image) {
+            // Create an image element if the image URL is provided
+            if (imageUrl) {
                 const imageElement = document.createElement('img');
-                imageElement.src = embed.image.url;
-                preview.appendChild(imageElement);
+                imageElement.src = imageUrl;
+                embedPreview.appendChild(imageElement);
             }
 
-            if (embed.thumbnail) {
-                const thumbnailElement = document.createElement('img');
-                thumbnailElement.src = embed.thumbnail.url;
-                thumbnailElement.style.float = 'right';
-                preview.appendChild(thumbnailElement);
+            // Create a div for fields if provided
+            if (fields) {
+                try {
+                    const fieldsArray = JSON.parse(fields);
+                    const fieldsContainer = document.createElement('div');
+                    fieldsContainer.className = 'embed-fields';
+
+                    fieldsArray.forEach(field => {
+                        const fieldElement = document.createElement('div');
+                        fieldElement.className = 'embed-field';
+
+                        const nameElement = document.createElement('span');
+                        nameElement.className = 'name';
+                        nameElement.textContent = field.name;
+
+                        const valueElement = document.createElement('span');
+                        valueElement.className = 'value';
+                        valueElement.textContent = field.value;
+
+                        fieldElement.appendChild(nameElement);
+                        fieldElement.appendChild(valueElement);
+                        fieldsContainer.appendChild(fieldElement);
+                    });
+
+                    embedPreview.appendChild(fieldsContainer);
+                } catch (e) {
+                    console.error('Invalid JSON for fields');
+                }
             }
 
-            if (embed.fields) {
-                const fieldsContainer = document.createElement('div');
-                fieldsContainer.className = 'embed-fields';
-                embed.fields.forEach(field => {
-                    const fieldElement = document.createElement('div');
-                    fieldElement.className = 'embed-field';
-                    fieldElement.innerHTML = `<span class="name">${field.name}</span>: <span class="value">${field.value}</span>`;
-                    fieldsContainer.appendChild(fieldElement);
-                });
-                preview.appendChild(fieldsContainer);
-            }
-
-            if (embed.footer) {
+            // Create a div for the footer if provided
+            if (footerText || footerIconUrl) {
                 const footerElement = document.createElement('div');
                 footerElement.className = 'embed-footer';
-                if (embed.footer.icon_url) {
+
+                if (footerIconUrl) {
                     const footerIcon = document.createElement('img');
-                    footerIcon.src = embed.footer.icon_url;
+                    footerIcon.src = footerIconUrl;
                     footerElement.appendChild(footerIcon);
                 }
-                const footerText = document.createElement('span');
-                footerText.textContent = embed.footer.text;
-                footerElement.appendChild(footerText);
-                preview.appendChild(footerElement);
+
+                if (footerText) {
+                    const footerTextElement = document.createElement('span');
+                    footerTextElement.textContent = footerText;
+                    footerElement.appendChild(footerTextElement);
+                }
+
+                embedPreview.appendChild(footerElement);
+            }
+
+            // Create an image element if the thumbnail URL is provided
+            if (thumbnailUrl) {
+                const thumbnailElement = document.createElement('img');
+                thumbnailElement.src = thumbnailUrl;
+                thumbnailElement.style.float = 'right';
+                embedPreview.appendChild(thumbnailElement);
             }
         }
     </script>
