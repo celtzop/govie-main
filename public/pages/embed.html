@@ -167,10 +167,6 @@
             <input type="number" id="color" placeholder="5814783">
         </div>
         <div class="form-group">
-            <label for="timestamp">Timestamp (ISO 8601)</label>
-            <input type="datetime-local" id="timestamp">
-        </div>
-        <div class="form-group">
             <label for="footer-text">Footer Text</label>
             <input type="text" id="footer-text" placeholder="Footer text">
         </div>
@@ -185,18 +181,6 @@
         <div class="form-group">
             <label for="thumbnail-url">Thumbnail URL</label>
             <input type="url" id="thumbnail-url" placeholder="https://example.com/thumbnail.png">
-        </div>
-        <div class="form-group">
-            <label for="author-name">Author Name</label>
-            <input type="text" id="author-name" placeholder="Author Name">
-        </div>
-        <div class="form-group">
-            <label for="author-url">Author URL</label>
-            <input type="url" id="author-url" placeholder="https://example.com">
-        </div>
-        <div class="form-group">
-            <label for="author-icon-url">Author Icon URL</label>
-            <input type="url" id="author-icon-url" placeholder="https://example.com/author-icon.png">
         </div>
         <div class="form-group">
             <label for="fields">Fields (JSON Array)</label>
@@ -233,7 +217,6 @@
                 description: title ? `## ${title}\n${description}` : description, // Title included in description as "## Title"
                 url,
                 color,
-                timestamp,
                 footer: footerText ? { text: footerText, icon_url: footerIconUrl || undefined } : undefined,
                 image: imageUrl ? { url: imageUrl } : undefined,
                 thumbnail: thumbnailUrl ? { url: thumbnailUrl } : undefined,
