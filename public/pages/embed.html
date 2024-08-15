@@ -230,8 +230,7 @@
             }
 
             const embed = {
-                title: title ? `## ${title}` : undefined, // Title displayed as "## Title" in the description
-                description,
+                description: title ? `## ${title}\n${description}` : description, // Title included in description as "## Title"
                 url,
                 color,
                 timestamp,
