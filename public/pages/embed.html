@@ -230,7 +230,7 @@
             }
 
             const embed = {
-                title,
+                title: title ? `## ${title}` : undefined, // Title displayed as "## Title" in the description
                 description,
                 url,
                 color,
