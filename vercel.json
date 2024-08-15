@@ -2,14 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "public/embed.html",
+      "src": "public/index.html",
       "use": "@vercel/static"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/public/embed.html"
+      "dest": "/public/index.html"
     }
   ]
 }
