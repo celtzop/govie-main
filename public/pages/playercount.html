@@ -1,0 +1,157 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roblox Player Count</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Lato', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #004d44;
+            color: #ffffff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        header img {
+            max-width: 150px;
+            height: auto;
+        }
+
+        nav {
+            background-color: #004d44;
+            color: #ffffff;
+            font-size: 16px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+
+        nav ul li a:hover {
+            background-color: #0056a0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .player-count {
+            font-size: 24px;
+            font-weight: bold;
+            color: #004d44;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #004d44;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        button:hover {
+            background-color: #003e3b;
+        }
+
+        pre {
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-height: 300px;
+            overflow-y: auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="../img/gov.ie.png" alt="Government of Ireland Logo">
+        <nav>
+            <ul>
+                <li><a href="#">News</a></li>
+                <li><a href="#">Departments</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="/pages/signin.html">Sign in</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Roblox Player Count</h1>
+        <div id="player-count" class="player-count">Loading...</div>
+        <button onclick="fetchPlayerCount()">Refresh Player Count</button>
+        <h2>Generated JSON</h2>
+        <pre id="output"></pre>
+    </div>
+
+    <script>
+        async function fetchPlayerCount() {
+            try {
+                const response = await fetch('/api/player-count');
+                const data = await response.json();
+                document.getElementById('player-count').textContent = `Current Player Count: ${data.playerCount}`;
+                document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+            } catch (error) {
+                document.getElementById('player-count').textContent = 'Failed to load player count';
+                document.getElementById('output').textContent = '';
+            }
+        }
+
+        // Fetch player count on page load
+        fetchPlayerCount();
+    </script>
+</body>
+
+</html>
