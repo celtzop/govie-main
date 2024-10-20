@@ -6,36 +6,52 @@
     <title>Sign In</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f4f4f4;
+            background: linear-gradient(to right, #6a11cb, #2575fc); 
             margin: 0;
+            color: #333; 
         }
         .signin-container {
-            background-color: #fff;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+            background-color: #ffffff;
+            padding: 40px; 
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
+            border-radius: 12px; 
             text-align: center;
+            width: 300px; 
+            transition: transform 0.2s; 
+        }
+        .signin-container:hover {
+            transform: translateY(-5px); 
         }
         .signin-container h2 {
             margin-bottom: 20px;
+            font-size: 24px; 
+            color: #6a11cb; 
         }
         .signin-container button {
-            padding: 10px 20px;
+            padding: 12px 20px;
             margin: 10px;
             border: none;
-            border-radius: 4px;
+            border-radius: 6px;
             cursor: pointer;
+            font-size: 16px; 
+            font-weight: bold; 
+            transition: background-color 0.3s, transform 0.2s; 
         }
         .roblox-button {
             background-color: #ffcc00;
+            color: #333; 
         }
         .roblox-button:hover {
-            background-color: #e6b800;
+            background-color: #e6b800; 
+            transform: translateY(-2px); 
+        }
+        .roblox-button:active {
+            transform: translateY(1px); 
         }
     </style>
 </head>
