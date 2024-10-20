@@ -55,10 +55,10 @@
 
 <script>
     document.getElementById('roblox-signin-button').addEventListener('click', function() {
-        const robloxClientId = 'YOUR_ROBLOX_CLIENT_ID';
-        const robloxRedirectUri = 'YOUR_ROBLOX_REDIRECT_URI';
+        const robloxClientId = '7968251567315361623';
+        const robloxRedirectUri = 'https://www.rxireland.org/';
         const robloxResponseType = 'code';
-        const robloxScope = 'YOUR_ROBLOX_SCOPE';
+        const robloxScope = 'sso';
 
         const robloxOauthUrl = `https://auth.roblox.com/oauth/authorize?response_type=${robloxResponseType}&client_id=${robloxClientId}&redirect_uri=${encodeURIComponent(robloxRedirectUri)}&scope=${robloxScope}`;
 
