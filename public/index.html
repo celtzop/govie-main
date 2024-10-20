@@ -4,17 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Government of Ireland</title>
-    <link rel="stylesheet" href="css/index.css"> <!-- Updated path -->
+    <link rel="stylesheet" href="css/index.css"> <!-- Correct CSS path -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <script src="/javascript/theme.js" defer></script> <!-- Moved this above other scripts -->
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Official portal for eiretac's Republic of Ireland. Access government services here.">
-    <meta name="keywords" content="ireland, eiretac, zop, zop studios, republic of ireland, eire">
-    <meta property="og:image" content="https://govie.vercel.app/img/logo.png">
-    <meta property="og:url" content="https://www.rxireland.org">
-    <meta name="author" content="rxireland">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/javascript/theme.js" defer></script> <!-- Correct JS path -->
 </head>
 
 <body>
@@ -25,36 +17,10 @@
                 <li><a href="#">News</a></li>
                 <li><a href="#">Departments</a></li>
                 <li><a href="#">Services</a></li>
-                <li id="auth-link"><a href="/pages/signin.html">Sign in</a></li> <!-- Updated auth-link ID -->
+                <li id="auth-link"><a href="/pages/signin.html">Sign in</a></li>
             </ul>
         </nav>
     </header>
-
-    <div class="search-container">
-        <div class="search-content">
-            <div class="search-box">
-                <h1>Search for services<br>or information</h1>
-                <form action="/en/search/" method="GET" role="search" aria-label="Enter search term">
-                    <div class="input-group">
-                        <input type="text" name="q" value="" class="form-control input-lg no-radius" aria-label="Search input field" placeholder="Enter search term">
-                        <span class="input-group-btn">
-                            <button class="btn btn-state-gold btn-lg no-radius" alt="Button: Search">
-                                <img src="/img/Icon_Search.png" alt="Image: Search button"> <!-- Updated path -->
-                            </button>
-                        </span>
-                    </div>
-                </form>
-            </div>
-            <div class="search-info">
-                <ul aria-label="Pinned items">
-                    <li><a href="#">Sex</a></li>
-                    <li><a href="#">Kick them out</a></li>
-                    <li><a href="#">Lolsies</a></li>
-                    <li><a href="pages/embed.html">Embed Generator</a></li> <!-- Updated path -->
-                </ul>
-            </div>
-        </div>
-    </div>
 
     <div class="container">
         <h1>gov.ie</h1>
@@ -93,21 +59,20 @@
     </footer>
 
     <script>
-        // This script updates the header when the username is available
+        // Updates the header with the user's name if signed in
         function updateHeader() {
             const authLink = document.getElementById('auth-link');
             const username = localStorage.getItem('username');
 
             if (username) {
-                authLink.innerHTML = `<a href="/pages/logout.html">Welcome, ${username}</a>`; // Update link to show username
+                authLink.innerHTML = `<a href="/pages/logout.html">Welcome, ${username}</a>`;
             } else {
-                authLink.innerHTML = '<a href="/pages/signin.html">Sign in</a>'; // Default to 'Sign In'
+                authLink.innerHTML = '<a href="/pages/signin.html">Sign in</a>';
             }
         }
 
-        // Call updateHeader on page load
         document.addEventListener('DOMContentLoaded', updateHeader);
     </script>
-    <script src="javascript/callback.js"></script>
+<script src="javascript/callback.js"><script>
 </body>
 </html>
