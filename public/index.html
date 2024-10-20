@@ -7,6 +7,31 @@
     <link rel="stylesheet" href="css/index.css"> <!-- Correct CSS path -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <script src="/javascript/theme.js" defer></script> <!-- Correct JS path -->
+    <style>
+        /* Custom styles for the navbar */
+        #main-navbar {
+            padding: 10px 0; /* Reduce padding for a smaller navbar */
+            background-color: #00665C; /* Change this to your preferred color */
+        }
+        
+        .navbar-header img {
+            height: 40px; /* Adjust height of the logo */
+            width: auto; /* Maintain aspect ratio */
+        }
+
+        .navbar-nav {
+            margin-left: auto; /* Aligns nav items to the right */
+        }
+
+        .navbar-nav li a {
+            color: white; /* Change color to match design */
+            padding: 10px 15px; /* Add padding for better spacing */
+        }
+
+        .navbar-nav li a:hover {
+            background-color: rgba(255, 255, 255, 0.1); /* Optional: hover effect */
+        }
+    </style>
 </head>
 
 <body>
@@ -31,7 +56,6 @@
                             <a href="/pages/signin.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                 Log in <span class="caret"></span>
                             </a>
-                            <div class="col-sm-12 col-xs-12 hidden-lg hidden-md margin-bottom-sm"></div>
                         </li>
                     </ul>
                 </div>
