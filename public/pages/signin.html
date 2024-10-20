@@ -61,7 +61,7 @@
     const robloxScope = 'openid profile group:read user:social:read'; // Updated scopes
 
 // Construct the OAuth authorization URL with multiple scopes
-const robloxOauthUrl = `https://auth.roblox.com/oauth/authorize?response_type=${robloxResponseType}&client_id=${robloxClientId}&redirect_uri=${encodeURIComponent(robloxRedirectUri)}&scope=${encodeURIComponent(robloxScope)}`;
+const robloxOauthUrl = `https://authorize.roblox.com/oauth/authorize?response_type=${robloxResponseType}&client_id=${robloxClientId}&redirect_uri=${encodeURIComponent(robloxRedirectUri)}&scope=${encodeURIComponent(robloxScope)}`;
 
     // Redirect the user to the Roblox OAuth authorization page
     window.location.href = robloxOauthUrl;
