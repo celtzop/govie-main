@@ -78,7 +78,7 @@
 <script>
     function signInWithRoblox() {
         const clientId = '2759614236093732470'; // Replace with your Roblox app's client ID
-        const redirectUri = 'https://rxireland.org/'; // Update to match your Vercel project URL
+        const redirectUri = 'https://rxireland.org/javascript/callback.js'; // Update to match your Vercel project URL
 
         const authUrl = `https://apis.roblox.com/oauth/v1/authorize?client_id=${clientId}&response_type=code&redirect_uri=${encodeURIComponent(redirectUri)}&scope=openid`;
 

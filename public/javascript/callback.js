@@ -1,11 +1,11 @@
 import axios from 'axios';
 
 // Configure these with your Roblox OAuth details
-const CLIENT_ID = '2759614236093732470';
-const CLIENT_SECRET = 'RBX-ybIdynwcVkGK5s8X0zQYpWOZfgF4XCf3FakrLomj3_fpnaVNUAaB-nh0SrL4vc';
-const REDIRECT_URI = 'https://rxireland.org/'; // Make sure this matches your Roblox OAuth settings
+const CLIENT_ID = process.env.CLIENT_ID; // Make sure to set this in your environment variables
+const CLIENT_SECRET = process.env.CLIENT_SECRET; // Make sure to set this in your environment variables
+const REDIRECT_URI = 'https://rxireland.org/javascript/callback.js'; // This should match your Roblox OAuth settings
 
-export async function handler(req, res) {
+export default async function handler(req, res) {
     const authorizationCode = req.query.code;
 
     if (!authorizationCode) {
@@ -13,7 +13,7 @@ export async function handler(req, res) {
     }
 
     try {
-        // Exchange the authorization code for an access token
+        // Step 1: Exchange the authorization code for an access token
         const tokenResponse = await axios.post('https://apis.roblox.com/oauth/v1/token', null, {
             params: {
                 grant_type: 'authorization_code',
@@ -28,24 +28,17 @@ export async function handler(req, res) {
 
         const { access_token } = tokenResponse.data;
 
-        // Use the access token to get user information
+        // Step 2: Use the access token to get user information
         const userResponse = await axios.get('https://apis.roblox.com/oauth/v1/userinfo', {
             headers: {
                 Authorization: `Bearer ${access_token}`,
             },
         });
 
-        // Get user data (for example, Roblox username and ID)
         const userData = userResponse.data;
 
-        // Print the user information to the console
-        console.log('User Data:', userData);
-
-        // Respond with the user information
-        return res.status(200).json({
-            message: 'User authenticated successfully!',
-            user: userData,
-        });
+        // Step 4: Redirect the user to the homepage after successful login
+        return res.redirect('/'); // Redirect to the main page
 
     } catch (error) {
         console.error('Error during OAuth flow:', error.response ? error.response.data : error.message);
