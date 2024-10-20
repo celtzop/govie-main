@@ -1,16 +1,37 @@
 {
-  "name": "govie-main",
+  "name": "zop-website",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "i dontk know?",
   "dependencies": {
+    "@types/node": "^22.5.1",
+    "@vercel/node": "^3.2.10",
+    "axios": "^1.7.6",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-session": "^1.17.3",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
+    "passport-discord": "^0.1.4",
     "noblox.js": "^6.0.2",
-    "axios":"1.7.7"
+    "jsonwebtoken": "^9.0.2",
+    "body-parser": "1.20.2",
+    "ts-node": "^10.9.2",
+    "cookie": "^0.6.0",
+    "pdf-lib": "^1.17.1",
+    "fontkit": "^2.0.4",
+    "typescript": "^5.5.4"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/passport": "^1.0.8",
+    "@types/passport-local": "^1.0.33",
+    "@types/passport-discord": "^0.1.13"
   }
 }
