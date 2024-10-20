@@ -11,55 +11,88 @@
 
 <body>
     <header>
-        <img src="img/gov.ie.png" alt="Government of Ireland Logo">
-        <nav>
-            <ul>
-                <li><a href="#">News</a></li>
-                <li><a href="#">Departments</a></li>
-                <li><a href="#">Services</a></li>
-                <li id="auth-link"><a href="/pages/signin.html">Sign in</a></li>
-            </ul>
+        <nav class="navbar navbar-default" role="navigation" aria-labelledby="RebootSrMainMenuNav" id="main-navbar">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#RebootMainMenu" aria-expanded="false">
+                        <span class="sr-only">Toggle main navigation</span>
+                        <img src="/static/_reboot/_reboot_app/img/Icon_Hamburger.png" width="24" height="24" alt="Image: Toggle main navigation">
+                    </button>
+                    <a href="/en/" navbar-logo-width="">
+                        <link rel="preload" as="image" href="/static/_reboot/_reboot_app/img/Image_Logo.png" fetchpriority="high">
+                        <img src="/static/_reboot/_reboot_app/img/Image_Logo.png" alt="gov - Irish Government logo">
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="RebootMainMenu">
+                    <h2 class="sr-only" id="RebootSrMainMenuNav" style="color: #FFF;">
+                        Main navigation
+                    </h2>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/en/search/?sort_by=published_date&amp;type=press_releases">News</a></li>
+                        <li><a href="/en/help/departments/">Departments</a></li>
+                        <li><a href="/en/services/">Services</a></li>
+                        <li class="dropdown" style="border-left: 1px solid white">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Languages <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/en/?">
+                                        English
+                                        <span class="sr-only">(current)</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/ga/?" lang="ga">
+                                        Gaeilge
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="col-sm-12 col-xs-12 hidden-lg hidden-md margin-bottom-sm"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </nav>
     </header>
 
     <div class="container-fluid margin-bottom-xlg" id="main" role="main">
-    <div class="row search-container" style="background-color: #00665C;" reboot-jumbotron="">
-        <div class="container">
-            <div class="row">
-                <!-- Left side: Search form -->
-                <div class="col-md-8 col-sm-6 col-xs-12">
-                    <h1 tabindex="0" style="color: #FFF;">
-                        Search for services<br>or information
-                    </h1>
-                    <form action="/en/search/" method="GET" role="search" aria-label="Enter search term">
-                        <div class="input-group" style="width: 82%;">
-                            <input type="text" name="q" value="" class="form-control input-lg no-radius" aria-label="Search input field" placeholder="Enter search term">
-                            <span class="input-group-btn">
-                                <button class="btn btn-state-gold btn-lg no-radius" alt="Button: Search" onclick="removeTags();">
-                                    <img src="/img/Icon_Search.png" alt="Image: Search button"> <!-- Updated path for image -->
-                                </button>
-                            </span>
-                        </div>
-                    </form>
-                </div>
+        <div class="row search-container" style="background-color: #00665C;" reboot-jumbotron="">
+            <div class="container">
+                <div class="row">
+                    <!-- Left side: Search form -->
+                    <div class="col-md-8 col-sm-6 col-xs-12">
+                        <h1 tabindex="0" style="color: #FFF;">
+                            Search for services<br>or information
+                        </h1>
+                        <form action="/en/search/" method="GET" role="search" aria-label="Enter search term">
+                            <div class="input-group" style="width: 82%;">
+                                <input type="text" name="q" value="" class="form-control input-lg no-radius" aria-label="Search input field" placeholder="Enter search term">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-state-gold btn-lg no-radius" alt="Button: Search" onclick="removeTags();">
+                                        <img src="/img/Icon_Search.png" alt="Image: Search button"> <!-- Updated path for image -->
+                                    </button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
 
-                <!-- Right side: Pinned items -->
-                <div class="col-md-4 col-sm-6 col-xs-12">
-                    <h2 class="sr-only" style="color: #FFF;">Pinned items</h2>
-                    <ul aria-label="Pinned items" reboot-site-list="">
-                        <li><a href="/en/campaigns/budget/">Budget 2025</a></li>
-                        <li><a href="/en/publication/79659-climate-action-plan-2024/">Climate Action Plan 2024</a></li>
-                        <li><a href="/en/campaigns/dfc50-housing-for-all/">Housing for All</a></li>
-                        <li><a href="/en/campaigns/56c17-migration-and-ireland/">Migration and Ireland</a></li>
-                        <li><a href="/en/publication/32015-sell-to-government/">Sell to Government</a></li>
-                    </ul>
+                    <!-- Right side: Pinned items -->
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <h2 class="sr-only" style="color: #FFF;">Pinned items</h2>
+                        <ul aria-label="Pinned items" reboot-site-list="">
+                            <li><a href="/en/campaigns/budget/">Budget 2025</a></li>
+                            <li><a href="/en/publication/79659-climate-action-plan-2024/">Climate Action Plan 2024</a></li>
+                            <li><a href="/en/campaigns/dfc50-housing-for-all/">Housing for All</a></li>
+                            <li><a href="/en/campaigns/56c17-migration-and-ireland/">Migration and Ireland</a></li>
+                            <li><a href="/en/publication/32015-sell-to-government/">Sell to Government</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-    
     <div class="container">
         <h1>gov.ie</h1>
         <p>what the frick.</p>
@@ -111,6 +144,6 @@
 
         document.addEventListener('DOMContentLoaded', updateHeader);
     </script>
-<script src="javascript/callback.js"><script>
+    <script src="javascript/callback.js"></script>
 </body>
 </html>
