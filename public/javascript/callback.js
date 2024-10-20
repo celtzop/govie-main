@@ -1,4 +1,4 @@
-import axios from 'axios';
+const axios = require('axios');
 
 // Configure these with your Roblox OAuth details
 const CLIENT_ID = '2759614236093732470';
