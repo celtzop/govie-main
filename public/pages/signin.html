@@ -66,10 +66,35 @@
         .roblox-button:active {
             transform: translateY(1px); 
         }
+        .o-headerSection{
+            margin:0 auto;width:1170px;height:inherit;display:table
+        }
+        
+         .o-headerSection{
+             width:100%
+         }
     </style>
 </head>
 <body>
 
+<div class="o-headerSection">
+                    <div id="fraudAlertContainer" class="t-alert-container">
+                        <div class="alert-title-section alert-title-section--one">
+                            <div class="alert-text-large"><span class="alert-bold">Warning!</span></div>
+                        </div>
+                        <div class="alert-section">
+                            <div>
+                                <span>
+                                    Be aware of phishing and smishing. rxireland will never ask you for personal or financial information.
+                                    <a id="securityLink" class="security-page-linkText" data-googletaglabel="Fraud alert banner - FAQ link" href="https://rxireland.org/">
+                                        Learn more
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
 <div class="signin-container">
     <h2>Sign in to access government services</h2>
     <button id="roblox-signin-button" class="roblox-button" onclick="signInWithRoblox()">Validate with Roblox</button>
