@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from 'https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js';
 
 // Configure these with your Roblox OAuth details
 const CLIENT_ID = '2759614236093732470';
