@@ -27,6 +27,33 @@
             box-sizing: border-box;
         }
 
+        header img {
+            max-width: 150px;
+            height: auto;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+
+        nav ul li a:hover {
+            background-color: #0056a0;
+        }
+
         .container {
             max-width: 900px;
             margin: 20px auto;
@@ -36,10 +63,12 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             display: flex;
             gap: 20px;
+            flex-wrap: wrap; /* Allow wrapping of elements */
         }
 
         .left {
             flex: 1;
+            min-width: 300px; /* Set a minimum width */
         }
 
         .controls {
@@ -59,8 +88,9 @@
 
         input[type="text"],
         input[type="number"],
-        input[type="range"] {
-            width: 100%;
+        input[type="range"],
+        input[type="url"] {
+            width: calc(100% - 24px); /* Adjust width to fit padding */
             padding: 12px;
             border: 1px solid #ddd;
             border-radius: 4px;
@@ -88,6 +118,8 @@
             padding: 10px;
             background: #fff;
             border-radius: 4px;
+            width: 100%; /* Full width to prevent overflow */
+            box-sizing: border-box; /* Include padding and border in width */
         }
 
         .hidden {
@@ -141,7 +173,7 @@
 </head>
 
 <body>
-       <header>
+    <header>
         <img src="../img/gov.ie.png" alt="Government of Ireland Logo">
         <nav>
             <ul>
