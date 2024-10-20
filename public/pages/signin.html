@@ -55,15 +55,17 @@
 
 <script>
     document.getElementById('roblox-signin-button').addEventListener('click', function() {
-        const robloxClientId = '7968251567315361623';
-        const robloxRedirectUri = 'https://www.rxireland.org/';
-        const robloxResponseType = 'code';
-        const robloxScope = 'openid';
+    const robloxClientId = '7968251567315361623'; // Your client ID
+    const robloxRedirectUri = 'https://www.rxireland.org/'; // Your redirect URI
+    const robloxResponseType = 'code'; // For authorization code flow
+    const robloxScope = 'openid'; // Scope for OpenID
 
-        const robloxOauthUrl = `https://auth.roblox.com/oauth/authorize?response_type=${robloxResponseType}&client_id=${robloxClientId}&redirect_uri=${encodeURIComponent(robloxRedirectUri)}&scope=${robloxScope}`;
+    // Construct the OAuth authorization URL
+    const robloxOauthUrl = `https://auth.roblox.com/oauth/authorize?response_type=${robloxResponseType}&client_id=${robloxClientId}&redirect_uri=${encodeURIComponent(robloxRedirectUri)}&scope=${robloxScope}`;
 
-        window.location.href = robloxOauthUrl;
-    });
+    // Redirect the user to the Roblox OAuth authorization page
+    window.location.href = robloxOauthUrl;
+});
 </script>
 
 </body>
