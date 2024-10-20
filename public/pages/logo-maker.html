@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Government Department Logo Maker</title>
+    <title>Roblox Ireland</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 
@@ -57,16 +57,14 @@
             color: #333;
         }
 
-        input {
+        input[type="text"],
+        input[type="number"],
+        input[type="range"] {
             width: 100%;
             padding: 12px;
             border: 1px solid #ddd;
             border-radius: 4px;
             box-sizing: border-box;
-        }
-
-        input[type="range"] {
-            width: auto;
         }
 
         button {
@@ -144,7 +142,7 @@
 
 <body>
     <header>
-        <h1>Government Department Logo Maker</h1>
+        <h1>Create the logo for a government department</h1>
     </header>
 
     <div class="container">
@@ -181,7 +179,7 @@
                         <input type="number" id="secondTextY2" value="709" oninput="updatePreview()">
                     </div>
                 </div>
-                <button onclick="showSaveImageModal()">Download</button>
+                <button onclick="showSaveImageModal()">Select Style to Download</button>
             </div>
             <div class="canvas-container">
                 <canvas id="logoCanvas" width="2905" height="822"></canvas>
@@ -193,13 +191,15 @@
     <div id="saveImageModal" class="modal hidden">
         <div class="modal-content">
             <span class="close" onclick="closeSaveImageModal()">&times;</span>
-            <h2>Download below</h2>
-            <button onclick="saveImage('standard')">Download</button>
+            <h2>Select Style to Download</h2>
+            <button onclick="saveImage('standard')">Standard</button>
+            <button onclick="saveImage('black')">Black</button>
+            <button onclick="saveImage('white')">White</button>
         </div>
     </div>
 
     <footer>
-       Inspired by Biorach.
+        Inspired by Biorach.
     </footer>
 
     <script src="scripts.js"></script>
