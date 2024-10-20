@@ -58,10 +58,10 @@
     const robloxClientId = '7968251567315361623'; // Your client ID
     const robloxRedirectUri = 'https://www.rxireland.org/'; // Your redirect URI
     const robloxResponseType = 'code'; // For authorization code flow
-    const robloxScope = 'openid'; // Scope for OpenID
+    const robloxScope = 'openid profile group:read user:social:read'; // Updated scopes
 
-    // Construct the OAuth authorization URL
-    const robloxOauthUrl = `https://auth.roblox.com/oauth/authorize?response_type=${robloxResponseType}&client_id=${robloxClientId}&redirect_uri=${encodeURIComponent(robloxRedirectUri)}&scope=${robloxScope}`;
+// Construct the OAuth authorization URL with multiple scopes
+const robloxOauthUrl = `https://auth.roblox.com/oauth/authorize?response_type=${robloxResponseType}&client_id=${robloxClientId}&redirect_uri=${encodeURIComponent(robloxRedirectUri)}&scope=${encodeURIComponent(robloxScope)}`;
 
     // Redirect the user to the Roblox OAuth authorization page
     window.location.href = robloxOauthUrl;
