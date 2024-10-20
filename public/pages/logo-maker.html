@@ -113,14 +113,15 @@
             background-color: #003e3b;
         }
 
-        .canvas-container {
-            border: 1px solid #ddd;
-            padding: 10px;
-            background: #fff;
-            border-radius: 4px;
-            width: 100%; /* Full width to prevent overflow */
-            box-sizing: border-box; /* Include padding and border in width */
-        }
+    .canvas-container {
+        border: 1px solid #ddd;
+        padding: 10px;
+        background: #fff;
+        border-radius: 4px;
+        width: 100%; /* Full width to prevent overflow */
+        box-sizing: border-box; /* Include padding and border in width */
+        overflow: hidden; /* Prevent overflow of canvas */
+    }
 
         .hidden {
             display: none;
