@@ -70,75 +70,56 @@ nav ul li a:hover {
    background-color: #0056a0;
 }
 
+/* Search Container Styling */
 .search-container {
-   background-color: #00665c;
-   padding: 15px;
-   margin: 0 auto;
-   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-   display: flex;
-   justify-content: center;
+    padding: 30px 0;
+    margin-bottom: 30px;
 }
 
-.search-content {
-   max-width: 1000px;
-   width: 100%;
-   display: flex;
-   justify-content: space-between;
+.search-container h1 {
+    font-size: 36px;
+    color: #FFF;
 }
 
-.search-box {
-   flex: 2;
-   display: flex;
-   flex-direction: column;
-   border-radius: 4px;
-   overflow: hidden;
+.search-container .input-group {
+    max-width: 100%;
 }
 
-.search-box h1 {
-   margin: 0;
-   padding: 0 20px;
-   color: #ffffff;
-   text-align: left;
+.search-container .form-control {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 0;
+    font-size: 16px;
 }
 
-.search-box form {
-   display: flex;
-   flex-direction: column;
-   margin-top: 20px;
+.search-container .btn-state-gold {
+    background-color: #83764e;
+    border: none;
+    color: #FFF;
+    padding: 10px 20px;
 }
 
-.search-box .input-group {
-   display: flex;
+.search-container .btn-state-gold:hover {
+    background-color: #5e5636;
 }
 
-.search-box input[type="text"] {
-   padding: 10px 16px;
-   border: 1px solid #ccc;
-   border-radius: 4px 0 0 4px;
-   font-size: 16px;
-   outline: none;
+.search-container ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 20px;
 }
 
-.search-box button {
-   padding: 15px;
-   background-color: #83764e;
-   color: #ffffff;
-   border: 1px solid #83764e;
-   cursor: pointer;
-   font-size: 16px;
+.search-container ul li {
+    margin-bottom: 10px;
 }
 
-.search-box button:hover {
-   background-color: #003e3b;
+.search-container ul li a {
+    color: #FFF;
+    text-decoration: none;
 }
 
-.search-info {
-   flex: 1;
-   padding-left: 20px;
-   color: #ffffff;
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
+.search-container ul li a:hover {
+    text-decoration: underline;
 }
 
 .container {
