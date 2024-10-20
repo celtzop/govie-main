@@ -6,8 +6,7 @@
     <title>Government of Ireland</title>
     <link rel="stylesheet" href="css/index.css"> <!-- Updated path -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <script src="/javascript/theme.js" defer></script>
-
+    <script src="/javascript/theme.js" defer></script> <!-- Moved this above other scripts -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Official portal for eiretac's Republic of Ireland. Access government services here.">
@@ -26,11 +25,10 @@
                 <li><a href="#">News</a></li>
                 <li><a href="#">Departments</a></li>
                 <li><a href="#">Services</a></li>
-                <li><a href="/pages/signin.html">Sign in</a></li>
+                <li id="auth-link"><a href="/pages/signin.html">Sign in</a></li> <!-- Updated auth-link ID -->
             </ul>
         </nav>
     </header>
-
 
     <div class="search-container">
         <div class="search-content">
@@ -64,38 +62,38 @@
     </div>
 
     <footer>
-    <div class="footer-content">
-        <div class="footer-left footer-section">
-            <img src="/img/gov.ie.png" alt="Government of Ireland logo" class="footer-logo" />
-            <p>&copy; rxireland. All Rights Reserved</p>
-        </div>
-        <div class="footer-middle footer-section">
-            <h3>Company</h3>
-            <ul class="footer-links">
-                <li><a href="#careers">Careers</a></li>
-                <li><a href="#mediacentre">Media Centre</a></li>
-                <li><a href="/pages/privacy-policy.html">Privacy Policy</a></li>
-                <li><a href="#contact">Contact Us</a></li>
-            </ul>
-        </div>
-        <div class="footer-right footer-section">
-            <h3>Connect with us</h3>
-            <div class="social-icons">
-                <a href="https://discord.gg/btJ9cVPa5m"><i class="fab fa-discord"></i></a>
-                <a href="https://twitter.com/wearezop"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="https://tiktok.com/@wearezop"><i class="fab fa-tiktok"></i></a>
-                <a href="https://instagram.com/wearezop/"><i class="fab fa-instagram"></i></a>
+        <div class="footer-content">
+            <div class="footer-left footer-section">
+                <img src="/img/gov.ie.png" alt="Government of Ireland logo" class="footer-logo" />
+                <p>&copy; rxireland. All Rights Reserved</p>
+            </div>
+            <div class="footer-middle footer-section">
+                <h3>Company</h3>
+                <ul class="footer-links">
+                    <li><a href="#careers">Careers</a></li>
+                    <li><a href="#mediacentre">Media Centre</a></li>
+                    <li><a href="/pages/privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-right footer-section">
+                <h3>Connect with us</h3>
+                <div class="social-icons">
+                    <a href="https://discord.gg/btJ9cVPa5m"><i class="fab fa-discord"></i></a>
+                    <a href="https://twitter.com/wearezop"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://tiktok.com/@wearezop"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://instagram.com/wearezop/"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="dark-mode-toggle">
+                <label for="dark-mode-switch">Dark Mode</label>
+                <input type="checkbox" id="dark-mode-switch" aria-label="Toggle Dark Mode">
             </div>
         </div>
-        <div class="dark-mode-toggle">
-            <label for="dark-mode-switch">Dark Mode</label>
-            <input type="checkbox" id="dark-mode-switch" aria-label="Toggle Dark Mode">
-        </div>
-    </div>
-</footer>
-
+    </footer>
 
     <script>
+        // This script updates the header when the username is available
         function updateHeader() {
             const authLink = document.getElementById('auth-link');
             const username = localStorage.getItem('username');
@@ -110,6 +108,6 @@
         // Call updateHeader on page load
         document.addEventListener('DOMContentLoaded', updateHeader);
     </script>
-<script> src="javascript/callback.js"</script>
+    <script> src="javascript/callback.js"</script>
 </body>
 </html>
