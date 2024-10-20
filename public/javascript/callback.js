@@ -4,7 +4,8 @@ const axios = require('axios');
 const CLIENT_ID = '2759614236093732470';
 const CLIENT_SECRET = 'RBX-ybIdynwcVkGK5s8X0zQYpWOZfgF4XCf3FakrLomj3_fpnaVNUAaB-nh0SrL4vc';
 const REDIRECT_URI = 'https://rxireland.org/'; // Make sure this matches your Roblox OAuth settings
-export default async function handler(req, res) {
+
+async function handler(req, res) {
     const authorizationCode = req.query.code;
 
     if (!authorizationCode) {
@@ -48,3 +49,5 @@ export default async function handler(req, res) {
         return res.status(500).json({ error: 'Authentication failed' });
     }
 }
+
+module.exports = handler;
