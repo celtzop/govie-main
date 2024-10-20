@@ -38,6 +38,9 @@ export async function handler(req, res) {
         // Get user data (for example, Roblox username and ID)
         const userData = userResponse.data;
 
+        // Print the user information to the console
+        console.log('User Data:', userData);
+
         // Respond with the user information
         return res.status(200).json({
             message: 'User authenticated successfully!',
