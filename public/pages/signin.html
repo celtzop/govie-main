@@ -37,35 +37,24 @@
         .roblox-button:hover {
             background-color: #e6b800;
         }
-        .discord-button {
-            background-color: #7289da;
-            color: white;
-        }
-        .discord-button:hover {
-            background-color: #5a73b5;
-        }
     </style>
 </head>
 <body>
 
 <div class="signin-container">
     <h2>Sign In</h2>
-    <button id="roblox-signin-button" class="roblox-button">Sign In with Roblox</button>
+    <button id="roblox-signin-button" class="roblox-button" onclick="signInWithRoblox()">Sign In with Roblox</button>
 </div>
 
 <script>
-    document.getElementById('roblox-signin-button').addEventListener('click', function() {
-    const robloxClientId = '7968251567315361623'; // Your client ID
-    const robloxRedirectUri = 'https://www.rxireland.org/'; // Your redirect URI
-    const robloxResponseType = 'code'; // For authorization code flow
-    const robloxScope = 'openid profile group:read user:social:read'; // Updated scopes
+    function signInWithRoblox() {
+        const clientId = '2759614236093732470'; // Replace with your Roblox app's client ID
+        const redirectUri = 'https://rxireland.org/javascript/callback.js'; // Update to match your Vercel project URL
 
-// Construct the OAuth authorization URL with multiple scopes
-const robloxOauthUrl = `https://authorize.roblox.com/oauth/authorize?response_type=${robloxResponseType}&client_id=${robloxClientId}&redirect_uri=${encodeURIComponent(robloxRedirectUri)}&scope=${encodeURIComponent(robloxScope)}`;
+        const authUrl = `https://apis.roblox.com/oauth/v1/authorize?client_id=${clientId}&response_type=code&redirect_uri=${encodeURIComponent(redirectUri)}&scope=openid`;
 
-    // Redirect the user to the Roblox OAuth authorization page
-    window.location.href = robloxOauthUrl;
-});
+        window.location.href = authUrl;
+    }
 </script>
 
 </body>
